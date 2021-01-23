@@ -269,14 +269,48 @@ public class Main {
         System.out.println("The total salary is " + Salary);
     }
 
+    public static void assign4_1() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter the year");
+        int year = input.nextInt();
+        System.out.println("Enter the month");
+        int month = input.nextInt();
+        int leapCheck1, leapCheck2, leapCheck3;
+        int numDay = 0;
+        // data validation
+        if (year < 0 || month <= 0 || month > 12) {
+            System.out.println("Error. Enter the valid data");
+            return;
+        }
+        // the rule
+        leapCheck1 = year % 4;
+        leapCheck2 = year % 100;
+        leapCheck3 = year % 400;
+        if (leapCheck1 == 0 || leapCheck3 == 0 && month == 2) {
+            numDay = 29;
+        }
+        if (leapCheck1 != 0 || leapCheck3 != 0 || leapCheck2 == 0 && month == 2) {
+            numDay = 28;
+        }
+        if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
+            numDay = 31;
+        }
+        if (month == 4 || month == 6 || month == 9 || month == 11) {
+            numDay = 31;
+        }
+        System.out.println("The year is " + year);
+        System.out.println("The month is " + month);
+        System.out.println("The number of days is " + numDay);
+    }
 
 
     public static void main(String[] args) {
        //assign1();
        //assign2();
        //assign3();
-       assign4();
+       //assign4();
        //assign5();
+        assign4_1();
 
     }
 }
