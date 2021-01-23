@@ -149,11 +149,135 @@ public class Main {
         }
         System.out.println("Your date is " + ystr + sep + mstr + sep + dstr);
     }
+    public static void assign4() {
+        // Write a program where calculation of month will be performed if day number of the year is given.
+        // For example, if the day number is 10, it is January, if day number is 32 - February, if day number is 100 - April, etc.
+        Scanner input = new Scanner(System.in);
+        System.out.println("Please specify if it is a leap year (true or false)");
+        boolean leap = input.nextBoolean();
+        System.out.println("Enter the day number");
+        int day = input.nextInt();
+        String month;
+        if (leap) {
+            if (day <= 0 || day > 366) {
+                System.out.println("Error. Please enter the correct day number");
+                return;
+                }
+        }   else {
+                if (day <= 0 || day > 365) {
+                    System.out.println("Error. Please enter the correct day number");
+                    return;
+                }
+        }
+        int jan = 31;
+        int janFeb;
+        if (leap) {
+            janFeb = (jan + 29);
+        } else {
+            janFeb = (jan + 28);
+        }
+        int febMar = (janFeb + 31);
+        int marApr = (febMar + 30);
+        int aprMay = (marApr + 31);
+        int mayJun = (aprMay + 30);
+        int junJul = (mayJun + 31);
+        int julAug = (junJul + 31);
+        int augSep = (julAug + 30);
+        int sepOct = (augSep + 31);
+        int octNov = (sepOct + 30);
+        //int decJan = (octNov + 31);
+        if (day <= jan) {
+            month = "January";
+        } else {
+            if (day <= janFeb) {
+                month = "February";
+            } else {
+                if (day <= febMar) {
+                    month = "March";
+                } else {
+                    if (day <= marApr) {
+                        month = "April";
+                    } else {
+                        if (day <= aprMay) {
+                            month = "May";
+                        } else {
+                            if (day <= mayJun) {
+                                month = "June";
+                            } else {
+                                if (day <= junJul) {
+                                    month = "July";
+                                } else {
+                                    if (day <= julAug) {
+                                        month = "August";
+                                    } else {
+                                        if (day <= augSep) {
+                                            month = "September";
+                                        } else {
+                                            if (day <= sepOct) {
+                                                month = "October";
+                                            } else {
+                                                if (day <= octNov) {
+                                                    month = "November";
+                                                } else {
+                                                    month = "December";
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        //System.out.println(b);
+        //System.out.println(c);
+        System.out.println("The day number is " + day);
+        System.out.println("The month is " + month);
+    }
+
+    public static void assign5() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Please submit your actual time (h)");
+        int workingHoursInDay = input.nextInt();
+        System.out.println("Please enter the hourly rate");
+        int hourlyRate = input.nextInt();
+        // reading the FTE from the scanner
+        System.out.println("Please enter your allocation");
+        int hourAllocation = input.nextInt();
+        // reading the overtime cost from the scanner
+        System.out.println("Please enter your overtime cost");
+        int overTimeCost = input.nextInt();
+        // int rate = 10;
+        int overTime = (workingHoursInDay - hourAllocation);
+        //int bonus = overTime * 15;
+        int bonus = overTime * overTimeCost;
+        int Salary;
+        if (hourlyRate <= 0 || hourAllocation <= 0 || hourAllocation > 8 || overTimeCost <=0 || workingHoursInDay < 0 || workingHoursInDay > 24 ) {
+            System.out.println("Error. Please enter the valid data");
+            return;
+        }
+        if (workingHoursInDay <= hourAllocation) {
+            Salary = (workingHoursInDay * hourlyRate);
+        } else {
+            Salary = (workingHoursInDay - overTime) * hourlyRate + bonus;
+            System.out.println("The overtime is " + overTime + " hours");
+            System.out.println("The bonus is " + bonus);
+        }
+        System.out.println("The base salary is " + hourlyRate * hourAllocation);
+        System.out.println("The total salary is " + Salary);
+    }
+
+
 
     public static void main(String[] args) {
        //assign1();
        //assign2();
-        assign3();
+       //assign3();
+       assign4();
+       //assign5();
+
     }
 }
 
