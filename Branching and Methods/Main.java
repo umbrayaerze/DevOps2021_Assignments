@@ -275,28 +275,29 @@ public class Main {
         int year = input.nextInt();
         System.out.println("Enter the month");
         int month = input.nextInt();
-        int leapCheck1, leapCheck2, leapCheck3;
         int numDay = 0;
         // data validation
-        if (year < 0 || month <= 0 || month > 12) {
+        if (year < 1 || month <= 0 || month > 12) {
             System.out.println("Error. Enter the valid data");
             return;
         }
         // the rule
-        leapCheck1 = year % 4;
-        leapCheck2 = year % 100;
-        leapCheck3 = year % 400;
-        if (leapCheck1 == 0 || leapCheck3 == 0 && month == 2) {
-            numDay = 29;
-        }
-        if (leapCheck1 != 0 || leapCheck3 != 0 || leapCheck2 == 0 && month == 2) {
-            numDay = 28;
+        if (month == 2) {
+            int leapCheck1, leapCheck2, leapCheck3;
+            leapCheck1 = year % 4;
+            leapCheck2 = year % 100;
+            leapCheck3 = year % 400;
+            if (leapCheck1 == 0) {
+                if (leapCheck2 == 0 && leapCheck3 != 0) {
+                    numDay = 28;
+                } else numDay = 29;
+            } else numDay = 28;
         }
         if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
             numDay = 31;
         }
         if (month == 4 || month == 6 || month == 9 || month == 11) {
-            numDay = 31;
+            numDay = 30;
         }
         System.out.println("The year is " + year);
         System.out.println("The month is " + month);
