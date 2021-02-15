@@ -308,10 +308,10 @@ public class Main {
     public static void main(String[] args) {
        //assign1();
        //assign2();
-       //assign3();
+       assign3();
        //assign4();
        //assign5();
-        assign4_1();
+        //assign4_1();
 
     }
 }
